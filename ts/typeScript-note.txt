@@ -12,3 +12,41 @@ Vscode搭建TS环境
     4.按下F5开始调试，初次调试会让你选择调试环境 
         在调试按钮上面有一个配置按钮，点击对调试进行详细修改 
 
+-----------------微信-----------------
+通过button组件来弹出授权弹框 让用户同意授权
+通过wx.getUserInfo在用户已经同意授权的情况下静默获取用户信息
+判断用户是否授权 wx.getSetting  在success的回调中如果data.authSetting['scope.userInfo']为true 则已经授权，
+    wx.getSetting({
+      success:data=>{
+        if(data.authSetting['scope.userInfo']){
+          wx.getUserInfo({
+            success:res=>{
+              console.log('res',res)
+            }
+          })
+        }else{
+          console.log('err')
+        }
+      }
+    })
+
+微信自定义组件上可以有自定义的属性 eg:openType
+    子组件中定义：
+    properties: {
+        openType: {
+        type: String
+        }
+    },
+    父组件给自定义属性赋值：
+    <v-button open-type="getUserInfo" class="avatar-position" bind:getuserinfo="getUserInfo">
+        <image slot="img" class="avatar" src="/images/my/my.png" />
+    </v-button>
+
+    注意：子组件自定义属性时如果是驼峰法命名，在父组件传递时应该使用横线连接
+
+
+微信小程序之间的跳转要求跳转的小程序都必须关联同一个公众号（订阅号与服务号）
+    小程序的跳转使用navigator组件 设置target="miniProgram" app-id设置为要跳转的小程序的appid open-type设置为"navigate"
+ <navigator class="nav" target="miniProgram" app-id="wx8ffc97ad5bcccc89" open-type="navigate">
+ <image class="vendor" src="/images/my/vendor.png"></image>
+ </navigator> 

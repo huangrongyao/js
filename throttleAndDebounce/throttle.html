@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            margin:200px auto;
+            width:500px;
+            height:500px;
+            background-color: #9b9b9b;
+            text-align:center;
+            line-height: 500px;
+            font-size:30px
+        }
+
+    </style>
+</head>
+<body>
+    <div>0</div>
+</body>
+<script src="./lodash.js"></script>
+<script>
+    // 节流（debounce），就是指连续触发事件但是在 n 秒中只执行一次函数。节流会稀释函数的执行频率。一般有两种方式可以实现，分别是时间戳版和定时器版。
+    // 时间戳版和定时器版的节流函数的区别就是，时间戳版的函数触发是在时间段内开始的时候，而定时器版的函数触发是在时间段内结束的时候。
+    var div = document.querySelector('div')
+    let num = 0
+    function count(a){
+        num++ 
+        div.innerHTML = num
+        
+    }
+    // 不节流的情况
+    // div.addEventListener('mousemove',count)
+
+    // 1.引用lodash工具库的_.throttle
+    // div.addEventListener('mousemove',_.throttle(count,500))
+
+    // 自己实现throttle方法
+    // 2.时间戳版
+    function timeStamp(func, wait) {
+        let previous = 0
+        return function() {
+            let now = Date.now()
+            let context = this
+            let args = arguments
+            if (now - previous > wait) {
+                func.apply(context, args)
+                previous = now
+            }
+        }
+    }
+    // div.addEventListener('mousemove',timeStamp(count,1000))
+    // 3.定时器版本
+    function timer(func, wait) {
+        let timeout;
+        return function() {
+            let context = this;
+            let args = arguments;
+            if (!timeout) {
+                timeout = setTimeout(() => {
+                    timeout = null;
+                    func.apply(context, args)
+                }, wait)
+            }
+
+        }
+    }
+    div.addEventListener('mousemove',timer(count,1000))
+    // 4. 定时器与时间戳结合版本
+    /**
+     * @desc 函数节流
+     * @param func 函数
+     * @param wait 延迟执行毫秒数
+     * @param type 1 表时间戳版，2 表定时器版
+     */
+    function throttle(func, wait ,type) {
+        if(type===1){
+            let previous = 0
+        }else if(type===2){
+            let timeout
+        }
+        return function() {
+            let context = this
+            let args = arguments
+            if(type===1){
+                let now = Date.now()
+                if (now - previous > wait) {
+                    func.apply(context, args)
+                    previous = now
+                }
+            }else if(type===2){
+                if (!timeout) {
+                    timeout = setTimeout(() => {
+                        timeout = null;
+                        func.apply(context, args)
+                    }, wait)
+                }
+            }
+        }
+    }
+    div.addEventListener('mousemove',throttle(count,1000))
+
+
+</script>
+</html>

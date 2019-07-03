@@ -19,5 +19,7 @@ var a = [1,2,{name:'zs'}]
 var b = a
 b[0] = 2
 console.log(a)
+
+
 console.log(b)
 

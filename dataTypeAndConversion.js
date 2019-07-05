@@ -18,10 +18,10 @@
     // 下面这个变量并没有声明 
     // var age 
      
-    console.log(message);     // "undefined" 
-    console.log(age);         // 产生错误  age is not defined
-    console.log(typeof message);     // "undefined" 
-    console.log(typeof age);         // "undefined" 
+    // console.log(message);     // "undefined" 
+    // console.log(age);         // 产生错误  age is not defined
+    // console.log(typeof message);     // "undefined" 
+    // console.log(typeof age);         // "undefined" 
 
     // 结果表明，对未初始化和未声明的变量执行 typeof 操作符都返回了 undefined 值；
 
@@ -31,7 +31,7 @@
  *    null 值表 示一个空对象指针,而这也正是使用 typeof 操作符检测 null 值时会返回"object"的原因 
  * 
  */
-    console.log(typeof null)  // object 
+    // console.log(typeof null)  // object 
 
 /**  
  * 3. Boolean类型 
@@ -49,3 +49,43 @@
  *        如果浮点数值本身表示的就是一个整数（如1.0），那么该值也会被转换为整数
  *    NaN，即非数值（Not a Number）是一个特殊的数值，
  */
+
+ /**  
+ * 5. object类型 
+ *    ECMAScript中的对象其实就是一组数据和功能的集合 
+ *    Object 类型是所有它的实例的基础。换句话说， Object 类型所具有的任何属性和方法也同样存在于更具体的对象中
+ *    
+ *    Object 的每个实例都具有下列属性和方法。 
+ *      constructor：保存着用于创建当前对象的函数。对于前面的例子而言，构造函数（constructor） 就是 Object()。
+ *      hasOwnProperty(propertyName)：用于检查给定的属性在当前对象实例中（而不是在实例 的原型中）是否存在。其中，作为参数的属性名（propertyName）必须以字符串形式指定（例 如：o.hasOwnProperty("name")）。
+ *      isPrototypeOf(object)：用于检查传入的对象是否是传入对象的原型
+ *      propertyIsEnumerable(propertyName)：用于检查给定的属性是否能够使用 for-in 语句来枚举。与 hasOwnProperty()方法一样，作为参数的属性名必须以字符 串形式指定。
+ *      toLocaleString()：返回对象的字符串表示，该字符串与执行环境的地区对应。
+ *      toString()：返回对象的字符串表示。 
+ *      valueOf()：返回对象的字符串、数值或布尔值表示。通常与 toString()方法的返回值 相同。
+ *
+ *    由于在 ECMAScript中 Object 是所有对象的基础，因此所有对象都具有这些基本的属性和方法 
+ */
+
+    // var a = { 
+    //     name:'zs',
+    //     age:18,
+    //     favor:function(){
+    //         console.log('eat')
+    //     }
+    // }
+    // console.log(a.valueOf())
+    // console.log(+{})
+
+    function delayInvoke(func,wait){
+        console.log(arguments)
+
+        return function () {
+            let context = this
+            let args = arguments
+            console.log('args',args)
+        }
+    }
+    let a = delayInvoke(1,2)
+    console.log(a(2,3));
+    

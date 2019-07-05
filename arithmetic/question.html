@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+        //Q1 判断一个单词是否是回文？ //回文是指把相同的词汇或句子，在下文中调换位置或颠倒过来，。比如 mamam redivider
+        var a1 = '123456' 
+        function isHuiWen(a){
+            var reverse = a.split('').reverse().join('')
+            console.log(reverse)
+            return a === reverse ? true : false 
+        }
+        // isHuiWen(a1)
+
+        //Q2 去掉一组整型数组重复的值
+        var a2 = [1,2,4,8,6,7,8,9,4,5,3,4,5,6,87,5]
+        // function unique(arr){
+        //     console.log(new Set(arr)) 
+        // }
+        function unique(arr){
+            var newArr = [arr[0]]
+            for(var i = 0; i < arr.length; i++) {
+                var flag = true
+                for(var j = 0; j < newArr.length; j++){
+                    if(arr[i] === newArr[j]){
+                        flag = false
+                        break
+                    }
+                }  
+                if(flag){
+                    newArr[newArr.length] = arr[i]
+                }
+            }
+            console.log(newArr)
+        }
+        // unique(a2)
+
+        //Q3 统计一个字符串出现最多的字母 给出一段英文连续的英文字符窜，找出重复出现次数最多的字母,和次数
+        var a3 = 'dadadsadadadadafdfefdsgssdfg'
+        function findMaxDuplicateChar(str){
+            var obj = {}
+            // debugger
+            for(var i = 0; i < str.length ; i++){
+                if(obj[str[i]]){
+                    obj[str[i]] ++ 
+                }else{
+                    obj[str[i]] = 1
+                }
+            }
+            console.log(obj)
+            var maxChar = ''
+            var maxValue = 0
+            for (const key in obj) {
+                if(obj[key] > maxValue){
+                    maxChar = key
+                    maxValue = obj[key]
+                }
+            }
+            console.log('出现最多的字符',maxChar)
+            console.log('出现次数',maxValue)
+
+        }
+        // findMaxDuplicateChar(a3)
+
+        //Q4 冒泡排序
+        var a4 = [2,9,5,8,7]   
+        function bubbleSort(arr){
+            // debugger
+            for(var i = 0; i < arr.length - 1 ;i ++){
+                for(var j = i + 1; j < arr.length ; j ++ ){
+                    if(arr[i] > arr[j]){
+                        let tmp = arr[i]
+                        arr[i] = arr[j]
+                        arr[j] = tmp
+                    }
+                }
+            }
+            console.log(arr)
+        }
+        bubbleSort(a4)
+</script>
+</body>
+</html>

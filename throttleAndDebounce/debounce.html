@@ -13,19 +13,23 @@
             background-color: #9b9b9b;
             text-align:center;
             line-height: 500px;
-            font-size:30px
+            font-size:30px;
+            /* background: currentColor; */
+
         }
 
     </style>
 </head>
 <body>
     <div>0</div>
+    <input type="checkbox" name="as" id="a" value="Bike">
+    <input type="checkbox" name="as" id="b" value="car">
+    <button>点击</button>
 </body>
 <script src="./lodash.js"></script>
 <script>
     // 防抖（debounce），就是指触发事件后在 n 秒内函数只能执行一次，如果在 n 秒内又触发了事件，则会重新计算函数执行时间。
     // 防抖函数分为非立即执行版和立即执行版。
-
     var div = document.querySelector('div')
     let num = 0
     function count(a){
@@ -33,6 +37,11 @@
         div.innerHTML = num
         
     }
+    // document.querySelector('button').addEventListener('click',function(){
+
+    //     console.log(document.querySelector('#a').checked)
+    //     console.log(document.querySelector('#b').checked)
+    // })
     // 不防抖的情况
     // div.addEventListener('mousemove',count)
 
@@ -54,7 +63,7 @@
             if (callNow) func.apply(context, args)
         }
     }
-    div.addEventListener('mousemove',invoking(count,500))
+    // div.addEventListener('mousemove',invoking(count,500))
     // 3.非立即执行版本
     function delayInvoke(func,wait){
         let timeout
@@ -77,6 +86,7 @@
      * @param immediate true 表立即执行，false 表非立即执行
      */
     function debounce(func,wait,immediate) {
+        console.log(arguments)
         let timeout
         return function () {
             let context = this
@@ -96,7 +106,7 @@
             }
         }
     }
-    // div.addEventListener('mousemove',debounce(count,500,true))
+    div.addEventListener('mousemove',debounce(count,500,true))
     // div.addEventListener('mousemove',debounce(count,500,false))
 
 </script>

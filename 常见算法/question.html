@@ -139,12 +139,12 @@
         //     console.log('Hello World!');
         // }
         //解法二
-        var amﾠ = 1;
-        var am = 2;
-        var ﾠam = 3;
-        if(amﾠ==1 && am== 2 &&ﾠam==3) {
-            console.log("Why hello there!")
-        }
+        // var amﾠ = 1;
+        // var am = 2;
+        // var ﾠam = 3;
+        // if(amﾠ==1 && am== 2 &&ﾠam==3) {
+        //     console.log("Why hello there!")
+        // }
         //上面利用的是空格实现，主要空格的位置。
         //解法三
         // var val = 0;
@@ -157,13 +157,15 @@
         //     console.log('yay');
         // }
         //解法四
-        // var b=0;
-        // var a={valueOf(){
-        //     return b+=1;
-        // }}
-        // if(a == 1 && a == 2 && a == 3) {
-        //     console.log('hello')
-        // }
+        var b=0;
+        var am={
+            valueOf(){
+                return b+=1;
+            }
+        }
+        if(am == 1 && am == 2 && am == 3) {
+            console.log('hello')
+        }
        
 </script>
 </body>

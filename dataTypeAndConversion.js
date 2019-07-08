@@ -66,6 +66,7 @@
  *
  *    由于在 ECMAScript中 Object 是所有对象的基础，因此所有对象都具有这些基本的属性和方法 
  */
+        // https://www.cnblogs.com/imwtr/p/4392041.html 这篇文章介绍了toString与valueOf
         // console.log(flatten.valueOf())   // ƒ flatten(arr) {return arr.toString().split(',').map(function(item) {return Number(item)})}
         // console.log([1,2].valueOf())        //[1, 2]
         // console.log('str'.valueOf())    // str

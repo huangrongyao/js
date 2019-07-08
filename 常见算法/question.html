@@ -84,6 +84,14 @@
         }
         // bubbleSort(a4)
 
+        // Q5  得到斐波那契数列数列中第n项指向的数值是多少
+        //  斐波那契数列从第三项开始，每一项都等于前两项之和。指的是这样一个数列：0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144 …
+        function fib(n){
+            if(n===1 || n===2) return n-1 
+            return fib(n-1) + fib(n-2)
+        }
+        // console.log(fib(4))
+
         
 </script>
 </body>

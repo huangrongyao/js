@@ -92,6 +92,37 @@
         }
         // console.log(fib(4))
 
+        // Q6 在一个数组中 找出里面其中两项相加后的和为num，如果存在就返回两个数的索引位置，否则false
+        // 方法1：
+        // function fn6(arr,num){
+        //     var flag = false
+        //     var indexArr = []
+        //     for (let i = 0; i < arr.length; i++) {
+        //         if(flag){ break }
+        //         for (let j = i+1; j < arr.length; j++) {
+        //             if(arr[i]+ arr[j] === num){
+        //                 flag = true
+        //                 indexArr = [i,j]
+        //                 break
+        //             }
+        //         }
+        //     }
+        //     return flag ? indexArr : false
+        // }
+        // 方法2：
+        function fn6(arr,num){
+            for (let i = 0; i < arr.length; i++) {
+                let diff = num - arr[i]
+                let index = arr.findIndex(v=>v==diff)
+                if(index > -1){
+                    return [i,index]
+                }
+            }
+            return false
+        }
+        // console.log(fn6([2,2,3,15,8,9],17))
+        // Q7 将两个有序数组合并为一个排好序的大数组
+
         
 </script>
 </body>

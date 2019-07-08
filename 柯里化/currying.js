@@ -37,3 +37,18 @@ const curryAdd = createCurry(add,2)
 const sum = curryAdd(3)(4)(5)   
 
 // console.log(sum) 
+
+
+/**
+ * 生成柯里化函数，以参数长度达标作为触发条件
+ * @param {*} fn 目标函数
+ * @param {*} arity 目标函数参数个数
+ * @param {...any} args 调用传入的参数
+ */
+const curry = (fn, arity = fn.length, ...args) => {
+    if (arity <= args.length) {
+        return fn(...args)
+    } else {
+        return curry.bind(null, fn, arity, ...args);
+    }
+}

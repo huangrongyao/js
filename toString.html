@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //  toString()与toLocaleString()方法主要针对对象Object转换为字符串，如果是基本类型调用它们的时候，
+    //  先会把基本类型实例化为对应的对象类型，然后在转换为字符串。如：var test= 'a';这里的test并不是对象类型，
+    //  但是在调用时会首先通过new String()将它实例化为String包装类型。这篇文章主要讲解不同数据类型下的toString()与toLocaleString()的输出差异。
+
+    // 1.数字：
+        var n=123.126
+        console.log(n.toString());//"123.126"
+        console.log(n.toLocaleString());//"123.126"
+
+        // 如果是3位以内，小数位>=3的数字，toString()与toLocaleString()方法返回的是一样的字符串。
+
+        var n=1234.1267
+        console.log(n.toString());//"1234.1267"
+        console.log(n.toLocaleString());//"1,234.127"
+        // 如果是4位以上数字，则toLocaleString会让数字三位三位一分隔；如果小数位>3，则toLocaleString最后一位根据“四舍五入“，值的注意的是toLocaleString在IE下是不保留小数位的。
+
+        // 当toString和toLocaleString带参数时：
+
+        var n=1234.1267
+        console.log(n.toString(8));//"2322.10067551210635"
+        console.log(n.toLocaleString('zh-Hans-CN-u-nu-hanidec'));//"一,二三四.一二七"
+        // toString中传入的参数表示需要转换的进制，而toLocaleString具体参数可查考:MDN
+
+    // 2.日期
+        var n=new Date()
+        console.log(n);//Tue Dec 05 2017 11:13:06 GMT+0800 (中国标准时间)
+        console.log(n.toString());//Tue Dec 05 2017 11:13:06 GMT+0800 (中国标准时间)
+        console.log(n.toLocaleString());//2017/12/5 上午11:13:06
+        // toString转换为以默认的国际化日期显示格式的字符串，而toLocaleString转换为以本地日期显示格式的字符串。
+
+
+
+    // 3.其它类型效果都相同
+    // 数组：将数组转化为以,分隔的字符串。可用于多维数组转换一位数组【数组的扁平化】
+        var n=[1,2,[3,4]]
+        console.log(n.toString());//1,2,3,4
+        console.log(n.toLocaleString());//1,2,3,4
+
+    // 函数：都是函数转化为字符串
+        var n=function(){
+        };
+        console.log(n.toString());//function (){}
+        console.log(n.toLocaleString());//function (){}
+
+
+    // 布尔值：都是将布尔值转化为字符串
+        var n=true;
+        console.log(n.toString());//true
+        console.log(n.toLocaleString());//true
+
+
+    // 字符串：因其本身就是字符串
+        var n='abc';
+        console.log(n.toString());//abc
+        console.log(n.toLocaleString());//abc
+
+
+    // ​对象:
+        var n={
+            name:'tony',
+        };
+        console.log(n.toString());//[object Object]
+        console.log(n.toLocaleString());//[object Object]
+</script>
+</body>
+</html>

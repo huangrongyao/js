@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数组的扁平化</title>
+</head>
+<body>
+    <script>
+        /**
+         * @description reduce的用法
+         * @param { Function }  function 必需。用于执行每个数组元素的函数。
+         * @param { * }  initialValue 可选。传递给函数的初始值
+         * 如果有初始值则previousValue为初始值，如果没有则previousValue为数组的第一项，并且循环相应的少一次
+         * array.reduce(function(previousValue, currentValue, index, array), initialValue)
+         *   previousValue   必需  上一次调用回调返回的值，或者是提供的初始值initialValue
+         *   currentValue    必需  数组中当前被处理的元素
+         *   index           可选  当前元素在数组中的索引
+         *   array           可选  调用 reduce 的数组
+        */
+        
+            // var arr = [1,5,9,7]
+            // let a = arr.reduce(function(result,item,index,arr){
+            //     return result = result + item
+            // },0)
+            // console.log(a)
+
+        /**
+         * @description 数组扁平化是指将一个多维数组变为一维数组
+         * 遍历数组arr，若arr[i]为数组则递归遍历，直至arr[i]不为数组然后与之前的结果concat。
+         * [1, [2, 3, [4, 5]]]  ------>    [1, 2, 3, 4, 5]
+        */
+        var arr = [1,2,{name:'zs'},[[4,5],6]]
+        // var arr = [1,2,3,[[4,5],6]]
+
+        //1.依次循环数组添加
+        var newArr1 = []
+        function a(arr){
+            arr.forEach(v => {
+                Array.isArray(v)?a(v):newArr1.push(v)
+            })
+        }
+        // a(arr)
+        // console.log(newArr1)
+
+        //2.数组的reduce方法
+        // function flatten(arr) {  
+        //     return arr.reduce((result, item,index)=> {
+        //             // console.log(result,item.index)
+        //             return result.concat(Array.isArray(item) ? flatten(item) : item)
+        //     },[])
+        // }       
+        
+        //3.toString & split 调用数组的toString方法，将数组变为字符串然后再用split分割还原为数组 
+        //   [1,2,3].toString() ==> 1,2,3 具体可以看../toString.html
+        //   使用该方法的数组中不能有对象
+        function flatten(arr) {
+            return arr.toString().split(',').map(function(item) {
+                return Number(item)
+            })
+        }
+
+        //4.
+
+
+
+        let newArr2 = flatten(arr)
+        console.log(newArr2);
+    </script>
+</body>
+</html>

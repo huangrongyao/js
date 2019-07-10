@@ -1,5 +1,5 @@
 {
-    "git.path":"D:\\Git\\cmd\\git.exe",
+    "git.path":"D:/Git/cmd/git.exe",
     "files.associations": {
     "*.cjson": "jsonc",
     "*.wxss": "css",
@@ -9,11 +9,10 @@
     "wxml": "html"
     },
     "minapp-vscode.disableAutoConfig": true,
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 1,
     "breadcrumbs.enabled": true,
     "git.autofetch": true,
-    "terminal.integrated.shell.windows": "D:\\Git\\bin\\bash.exe", //这个是样式
-    
+    // "terminal.integrated.shell.windows": "D:/Git/bin/bash.exe", //终端设置为git
     "flow.useNPMPackagedFlow": true,
     "javascript.validate.enable": false,
     "editor.renderIndentGuides": false,

@@ -30,7 +30,7 @@ str1 = 28;
 str1 = null;
 str1 = undefined;
 function say(name) {
-    console.log("hello", name);
+    console.log("hello1", name);
     return undefined;
 }
 var xx;
@@ -49,16 +49,30 @@ var json2 = parse("1515");
 function say5() {
     return "ok";
 }
-say5();
 function say7(name) {
     console.log("hello", name);
 }
-say7("某某某");
 function say8(name, age) {
     console.log("hello", name, age);
 }
-say8("某某某");
 function ajax(url, method) {
     if (method === void 0) { method = "GET"; }
     console.log(url, method);
+}
+function sum(a) {
+    var args = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        args[_i - 1] = arguments[_i];
+    }
+    console.log(args);
+    return eval(args.join("+"));
+}
+var total = sum(1, 2, 3, 4, 5);
+function pickCard(x) {
+    if (typeof x == "object") {
+        console.log(1);
+    }
+    else if (typeof x == 'number') {
+        console.log(2);
+    }
 }

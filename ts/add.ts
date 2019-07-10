@@ -69,7 +69,7 @@
 
 // 9.void 类型 没有任何类型，一般是定义函数没有返回值。不 return  或者return undeifned ,其他类型的返回值会报错
     function say(name:string):void {
-        console.log("hello",name)  // 不return任何值没有问题
+        console.log("hello1",name)  // 不return任何值没有问题
         return undefined       // return  undefined 也可以 
     }   
     // say('xiaoming')
@@ -103,7 +103,7 @@
     function say5():(never | string) {
         return "ok"
     }
-    say5()
+    // say5()
 
 // ---------------------------2.函数---------------------------
     // 函数的定义：
@@ -111,7 +111,7 @@
     function say7(name:string):void {
         console.log("hello",name)
     }
-    say7("某某某")
+    // say7("某某某")
     // 形参和实参要完全一样，如想不一样，则需要配置可选参数，可选参数放在后面
 
     // 2.可选参数，用 ？ 处理，
@@ -119,8 +119,26 @@
     function say8(name:string,age?:number):void {
         console.log("hello",name,age)
     }
-    say8("某某某")
+    // say8("某某某")
     // 3.设置默认参数
     function ajax(url:string,method:string = "GET") {
         console.log(url,method)
     }
+    // 4.设置剩余参数 利用扩展运算符
+    function sum(a:number,...args:Array<number>):number {
+        console.log(args)  // [2,3,4,5]
+        return eval(args.join("+"))
+    }
+    let total:number = sum(1,2,3,4,5)
+    // console.log(total)
+
+    // 5.函数的重载 就是判断参数类型执行不同的逻辑   同名函数的问题，js中不存在函数的重载
+    function pickCard(x: any): any {
+        if (typeof x == "object") {
+            console.log(1)
+        } else if (typeof x == 'number') {
+            console.log(2)
+        }
+    }
+// ---------------------------3.类---------------------------
+    // 1.定义一个类

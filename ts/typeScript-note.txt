@@ -1,16 +1,4 @@
-命令行上，运行TypeScript编译器生成对应的js文件
-    tsc greeter.ts   
 
-Vscode搭建TS环境
-    1.打开命令行，键入npm i -g typescript 全局安装TS
-    2.继续在命令行环境下键入 tsc -init 进行初始化， 根目录下会生成 tsconfig.json 的文件，记录了编译成JS的选项 比较常用的设置是 
-        ”target” : 编译为何种规范，一般设置为 ES5 或者 ES2016/2017
-        “outdir” : 输出目录
-        “alwaysStrict” ： 打开严格模式 (‘use strict’)
-    3.命令行下输入 code . 打开VSCode进入该目录，按下 Ctrl+shift+B 快捷键会进行编译，初次编译会选择编译模式 
-        监视模式 是每当TS文件有变动就会自动编译，构建模式是手动命令编译时才会去编译,这里选择监视模式
-    4.按下F5开始调试，初次调试会让你选择调试环境 
-        在调试按钮上面有一个配置按钮，点击对调试进行详细修改 
 
 -----------------微信-----------------
 通过button组件来弹出授权弹框 让用户同意授权
@@ -50,3 +38,19 @@ Vscode搭建TS环境
  <navigator class="nav" target="miniProgram" app-id="wx8ffc97ad5bcccc89" open-type="navigate">
  <image class="vendor" src="/images/my/vendor.png"></image>
  </navigator> 
+------------------------------------------
+
+
+命令行上，运行TypeScript编译器生成对应的js文件
+    tsc greeter.ts   
+
+Vscode搭建TS环境
+    1.打开命令行，键入npm i -g typescript 全局安装TS
+    2.继续在命令行环境下键入 tsc -init 进行初始化， 根目录下会生成 tsconfig.json 的文件，记录了编译成JS的选项 比较常用的设置是 
+        ”target” : 编译为何种规范，一般设置为 ES5 或者 ES2016/2017
+        “outdir” : 输出目录,可以指定这个参数到指定目录
+        “alwaysStrict” ： 打开严格模式 (‘use strict’)
+    3.命令行下输入 code . 打开VSCode进入该目录，按下 Ctrl+shift+B 快捷键会进行编译，初次编译会选择编译模式 
+        监视模式 是每当TS文件有变动就会自动编译，构建模式是手动命令编译时才会去编译,这里选择监视模式
+    4.按下F5开始调试，初次调试会让你选择调试环境 
+        在调试按钮上面有一个配置按钮，点击对调试进行详细修改 

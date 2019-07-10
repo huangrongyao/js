@@ -1,0 +1,20 @@
+{
+    "git.path":"D:\\Git\\cmd\\git.exe",
+    "files.associations": {
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript"
+    },
+    "emmet.includeLanguages": {
+    "wxml": "html"
+    },
+    "minapp-vscode.disableAutoConfig": true,
+    "window.zoomLevel": 0,
+    "breadcrumbs.enabled": true,
+    "git.autofetch": true,
+    "terminal.integrated.shell.windows": "D:\\Git\\bin\\bash.exe", //这个是样式
+    
+    "flow.useNPMPackagedFlow": true,
+    "javascript.validate.enable": false,
+    "editor.renderIndentGuides": false,
+    }

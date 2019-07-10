@@ -1,4 +1,5 @@
 "use strict";
+// ---------------------------1.数据类型---------------------------
 // 1.布尔类型boolean
     let a:boolean = true 
 
@@ -44,17 +45,82 @@
         COMPLETED = "已确认收货"
     }
 
-// 7.任意类型 any 相当于放弃了类型检查
+// 7.任意类型 any 相当于放弃了类型检查 任何值都可以
     // 添加一个any类型，此时就不会报错了，但是也相当于放弃了类型检查了
     // btn 有可能获取的到也有可能获取不到是null类型
-    let btn:any = document.getElementById('btn')
-    btn.style.color = "blue"
+    // let btn:any = document.getElementById('btn')
+    // btn.style.color = "blue"
 
     // 当然也有粗暴一些的方式，利用 ! 强制断言
-    let btn1 = document.getElementById("btn")
-    btn1!.style!.color = "blue"
+    // let btn1 = document.getElementById("btn")
+    // btn1!.style!.color = "blue"
 
     // 可以赋值任何类型的值
     // 跟以前我们var let声明的一模一样的
     let person2:any = "某某某"
     person2 = 28
+
+// 8.null undefined类型 
+    let str1:(string | number | null | undefined)
+    str1 = "hello swr"
+    str1 = 28
+    str1 = null
+    str1 = undefined
+
+// 9.void 类型 没有任何类型，一般是定义函数没有返回值。不 return  或者return undeifned ,其他类型的返回值会报错
+    function say(name:string):void {
+        console.log("hello",name)  // 不return任何值没有问题
+        return undefined       // return  undefined 也可以 
+    }   
+    // say('xiaoming')
+
+// 10.never类型 永远不会有返回值 （很少用，用于抛出异常）
+    let xx:never
+    function error(message: string): never {
+        throw new Error(message)
+    }
+    // error("error")
+
+    // 可以看出在while中，是死循环，永远都不会有返回值，包括undefined
+    function loop():never {
+        while(true){
+            console.log("陷入死循环啦")
+        }
+    }
+    // loop()
+    // 包括比如JSON.parse也是使用这种 never | any
+    function parse(str:string):(never | any){
+        return JSON.parse(str)
+    }
+    // 首先在正常情况下，我们传一个JSON格式的字符串，是可以正常得到一个JSON对象的
+    // let json1 = parse('{"name":"邵威儒"}')
+    // 但是有时候，传进去的不一定是JSON格式的字符串，那么就会抛出异常
+    // 此时就需要never了
+    let json2 = parse("1515")
+
+    // 也就是说，当一个函数执行的时候，被抛出异常打断了，导致没有返回值或者该函数是一个死循环，永远没有返回值，这样叫做永远不会有返回值。
+    // 实际开发中，是never和联合类型来一起用，比如
+    function say5():(never | string) {
+        return "ok"
+    }
+    say5()
+
+// ---------------------------2.函数---------------------------
+    // 函数的定义：
+    // 1.形参和实参要完全一样
+    function say7(name:string):void {
+        console.log("hello",name)
+    }
+    say7("某某某")
+    // 形参和实参要完全一样，如想不一样，则需要配置可选参数，可选参数放在后面
+
+    // 2.可选参数，用 ？ 处理，
+    // 只能放在后面
+    function say8(name:string,age?:number):void {
+        console.log("hello",name,age)
+    }
+    say8("某某某")
+    // 3.设置默认参数
+    function ajax(url:string,method:string = "GET") {
+        console.log(url,method)
+    }

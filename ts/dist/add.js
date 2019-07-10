@@ -22,9 +22,43 @@ var orderStatus;
     orderStatus["DELIVERED"] = "\u5DF2\u53D1\u8D27";
     orderStatus["COMPLETED"] = "\u5DF2\u786E\u8BA4\u6536\u8D27";
 })(orderStatus || (orderStatus = {}));
-var btn = document.getElementById('btn');
-btn.style.color = "blue";
-var btn1 = document.getElementById("btn");
-btn1.style.color = "blue";
 var person2 = "某某某";
 person2 = 28;
+var str1;
+str1 = "hello swr";
+str1 = 28;
+str1 = null;
+str1 = undefined;
+function say(name) {
+    console.log("hello", name);
+    return undefined;
+}
+var xx;
+function error(message) {
+    throw new Error(message);
+}
+function loop() {
+    while (true) {
+        console.log("陷入死循环啦");
+    }
+}
+function parse(str) {
+    return JSON.parse(str);
+}
+var json2 = parse("1515");
+function say5() {
+    return "ok";
+}
+say5();
+function say7(name) {
+    console.log("hello", name);
+}
+say7("某某某");
+function say8(name, age) {
+    console.log("hello", name, age);
+}
+say8("某某某");
+function ajax(url, method) {
+    if (method === void 0) { method = "GET"; }
+    console.log(url, method);
+}

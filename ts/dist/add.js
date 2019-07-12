@@ -67,7 +67,6 @@ function sum(a) {
     console.log(args);
     return eval(args.join("+"));
 }
-var total = sum(1, 2, 3, 4, 5);
 function pickCard(x) {
     if (typeof x == "object") {
         console.log(1);
@@ -76,3 +75,14 @@ function pickCard(x) {
         console.log(2);
     }
 }
+var Person = (function () {
+    function Person(name, age) {
+        console.log(name);
+        this.name = name,
+            this.age = age;
+    }
+    Person.prototype.say = function () {
+        console.log('hello' + name);
+    };
+    return Person;
+}());

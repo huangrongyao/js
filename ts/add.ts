@@ -129,7 +129,7 @@
         console.log(args)  // [2,3,4,5]
         return eval(args.join("+"))
     }
-    let total:number = sum(1,2,3,4,5)
+    // let total:number = sum(1,2,3,4,5)
     // console.log(total)
 
     // 5.函数的重载 就是判断参数类型执行不同的逻辑   同名函数的问题，js中不存在函数的重载
@@ -142,3 +142,24 @@
     }
 // ---------------------------3.类---------------------------
     // 1.定义一个类
+    // constructor 方法是类的构造函数，是一个默认方法，通过 new 命令创建对象实例时，自动调用该方法 返回实例对象 this ，
+    // 但是也可以指定 constructor 方法返回一个全新的对象，让返回的实例对象不是该类的实例。
+    // ES6 要求，子类的构造函数必须执行一次 super 函数，否则会报错。 super 这个关键字，既可以当做函数使用，也可以当做对象使用。
+    // 这两种情况下，它的用法完全不用。
+    // class A {}
+    // class B extends A {
+    // constructor() {
+    //     super();  // ES6 要求，子类的构造函数必须执行一次 super 函数，否则会报错。
+    // }
+    class Person {
+        name:string
+        age:number
+        constructor(name:string,age:number) {
+            console.log(name)
+            this.name = name,
+            this.age = age
+        }
+        say(){
+            console.log('hello' + name)
+        }
+    }

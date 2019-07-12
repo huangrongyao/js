@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="">
+        /** 
+         * 1. REM在edge浏览器中不重新计算解决 在CSS样式中添加 body { font-size:100% } 如果不起作用，可以尝试将引用的REMjs放在head内引用
+         * 2. video muted属性 是设置静音 
+         * 3. 谷歌浏览器视频音频加上autoplay也无法自动播放解决方法：
+         *      1. 设置muted属性静音 和autoplay就可以自动播放但是初始化没有声音
+         *      2. js写个函数判断是否播放，没有则播放 并且定时器调用方法
+         *          function toggleSound() {
+                      var video = document.querySelector("video")  
+                        if (video.paused) { //判读是否播放  
+                           video.paused=false
+                           video.play() //没有就播放 
+                        }       
+                    } 
+                    setTimeout("toggleSound()",1) 
+         * 4.
+         * 
+         * 
+         * 
+        */
+    </script>
+</body>
+</html>

@@ -54,3 +54,7 @@ Vscode搭建TS环境
         监视模式 是每当TS文件有变动就会自动编译，构建模式是手动命令编译时才会去编译,这里选择监视模式
     4.按下F5开始调试，初次调试会让你选择调试环境 
         在调试按钮上面有一个配置按钮，点击对调试进行详细修改 
+
+
+https://www.cnblogs.com/ztfjs/p/react_typescript_test.html   react 与ts结合项目搭建
+创建支持ts的react项目：create-react-app projectname --typescript

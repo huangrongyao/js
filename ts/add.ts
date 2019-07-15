@@ -151,7 +151,7 @@
     // constructor() {
     //     super();  // ES6 要求，子类的构造函数必须执行一次 super 函数，否则会报错。
     // }
-    class Person {
+    class Person1 {
         name:string
         age:number
         constructor(name:string,age:number) {
@@ -163,3 +163,29 @@
             console.log('hello' + name)
         }
     }
+    // 2.类的继承
+    // class Parent{
+    // 这里声明的变量，是实例上的属性
+    class Person {
+        name:string
+        age:number
+        constructor(name:string,age:number){
+            // this.name和this.age必须在前面先声明好类型
+            // name:string   age:number
+            this.name = name
+            this.age = age
+        }
+        // 原型方法
+        say():string{
+            return "hello swr"
+        }
+    }
+    class Child extends Person {
+        childrenName:string 
+        constructor(name:string,age:number,childrenName:string){
+            super(name,age)
+            this.childrenName = childrenName
+        }
+        childSay()
+    }
+

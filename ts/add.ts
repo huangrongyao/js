@@ -180,7 +180,8 @@ class Person2 {
     }
 }
 // ---------------------------3.类---------------------------
-    // 1.定义一个类
+    // 
+    // 2.定义一个类
     // constructor 方法是类的构造函数，是一个默认方法，通过 new 命令创建对象实例时，自动调用该方法 返回实例对象 this ，
     // 但是也可以指定 constructor 方法返回一个全新的对象，让返回的实例对象不是该类的实例。
     // ES6 要求，子类的构造函数必须执行一次 super 函数，否则会报错。 super 这个关键字，既可以当做函数使用，也可以当做对象使用。
@@ -202,7 +203,7 @@ class Person2 {
             console.log('hello' + name)
         }
     }
-    // 2.类的继承
+    // 3.类的继承
     // class Parent{
     // 这里声明的变量，是实例上的属性
     class Person {
@@ -220,11 +221,33 @@ class Person2 {
         }
     }
     class Child extends Person {
-        childrenName:string 
-        constructor(name:string,age:number,childrenName:string){
+        childName:string 
+        constructor(name:string,age:number,childName:string){
             super(name,age)
-            this.childrenName = childrenName
+            this.childName = childName
         }
-        // childSay()
+        childSay():string{
+            return this.childName
+        }
     }
-
+    // let child = new Child('某某某1',28,'bb')
+    // console.log(child)
+    // 4.类的修饰符
+    //   public公开的，可以供自己、子类以及其它类访问
+    //   protected受保护的，可以供自己、子类访问，但是其他就访问不了
+    //   private私有的，只有自己访问，而子类、其他都访问不了 
+    class Person5 {
+        public name:string = 'zs'
+        private name1:string = 'zs'
+        constructor(name:string){
+            this.name1 = name
+        }
+    }
+    class Child5 extends Person5 {
+        constructor(name1:string){
+            super(name1)
+        }
+    }
+    let child5 = new Child5('hry')
+    console.log(child5)
+    console.log()

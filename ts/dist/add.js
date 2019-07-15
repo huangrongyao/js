@@ -42,37 +42,37 @@ str1 = "hello swr";
 str1 = 28;
 str1 = null;
 str1 = undefined;
-function say (name) {
+function say(name) {
     console.log("hello1", name);
     return undefined;
 }
 var xx;
-function error (message) {
+function error(message) {
     throw new Error(message);
 }
-function loop () {
+function loop() {
     while (true) {
         console.log("陷入死循环啦");
     }
 }
-function parse (str) {
+function parse(str) {
     return JSON.parse(str);
 }
 var json2 = parse("1515");
-function say5 () {
+function say5() {
     return "ok";
 }
-function say7 (name) {
+function say7(name) {
     console.log("hello", name);
 }
-function say8 (name, age) {
+function say8(name, age) {
     console.log("hello", name, age);
 }
-function ajax (url, method) {
+function ajax(url, method) {
     if (method === void 0) { method = "GET"; }
     console.log(url, method);
 }
-function sum (a) {
+function sum(a) {
     var args = [];
     for (var _i = 1; _i < arguments.length; _i++) {
         args[_i - 1] = arguments[_i];
@@ -80,7 +80,7 @@ function sum (a) {
     console.log(args);
     return eval(args.join("+"));
 }
-function pickCard (x) {
+function pickCard(x) {
     if (typeof x == "object") {
         console.log(1);
     }
@@ -88,6 +88,17 @@ function pickCard (x) {
         console.log(2);
     }
 }
+var Person2 = (function () {
+    function Person2(name, age) {
+        console.log(name);
+        this.name = name,
+            this.age = age;
+    }
+    Person2.prototype.say = function () {
+        console.log('hello' + name);
+    };
+    return Person2;
+}());
 var Person1 = (function () {
     function Person1(name, age) {
         console.log(name);
@@ -111,10 +122,31 @@ var Person = (function () {
 }());
 var Child = (function (_super) {
     __extends(Child, _super);
-    function Child(name, age, childrenName) {
+    function Child(name, age, childName) {
         var _this = _super.call(this, name, age) || this;
-        _this.childrenName = childrenName;
+        _this.childName = childName;
         return _this;
     }
+    Child.prototype.childSay = function () {
+        return this.childName;
+    };
     return Child;
 }(Person));
+var Person5 = (function () {
+    function Person5(name) {
+        this.name = 'zs';
+        this.name1 = 'zs';
+        this.name1 = name;
+    }
+    return Person5;
+}());
+var Child5 = (function (_super) {
+    __extends(Child5, _super);
+    function Child5(name1) {
+        return _super.call(this, name1) || this;
+    }
+    return Child5;
+}(Person5));
+var child5 = new Child5('hry');
+console.log(child5);
+console.log();

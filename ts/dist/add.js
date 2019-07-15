@@ -101,7 +101,6 @@ var Person2 = (function () {
 }());
 var Person1 = (function () {
     function Person1(name, age) {
-        console.log(name);
         this.name = name,
             this.age = age;
     }
@@ -132,21 +131,66 @@ var Child = (function (_super) {
     };
     return Child;
 }(Person));
-var Person5 = (function () {
-    function Person5(name) {
-        this.name = 'zs';
-        this.name1 = 'zs';
-        this.name1 = name;
+var Animal = (function () {
+    function Animal() {
     }
-    return Person5;
+    return Animal;
 }());
-var Child5 = (function (_super) {
-    __extends(Child5, _super);
-    function Child5(name1) {
-        return _super.call(this, name1) || this;
+var Person6 = (function (_super) {
+    __extends(Person6, _super);
+    function Person6() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-    return Child5;
-}(Person5));
-var child5 = new Child5('hry');
-console.log(child5);
-console.log();
+    Person6.prototype.eat = function () {
+        console.log("吃米饭");
+    };
+    return Person6;
+}(Animal));
+function getUserInfo(user) {
+    console.log(user.name + " " + user.age);
+}
+var total = function (a, b) {
+    return a + b;
+};
+var arr = ['规范数组', 'iamswr'];
+console.log(arr);
+var Person9 = (function () {
+    function Person9(name) {
+        this.name = name;
+    }
+    Person9.prototype.eat1 = function (any) {
+        console.log("\u5403" + any);
+    };
+    Person9.prototype.sleep = function () {
+        console.log('睡觉');
+    };
+    return Person9;
+}());
+var Person10 = (function () {
+    function Person10(name) {
+        this.name = name;
+    }
+    Person10.prototype.eat = function (any) {
+        console.log("\u5403" + any);
+    };
+    Person10.prototype.sleep = function () {
+        console.log('睡觉');
+    };
+    return Person10;
+}());
+function deal(value) {
+    return value;
+}
+var MyMath = (function () {
+    function MyMath() {
+        this.arr = [];
+    }
+    MyMath.prototype.add = function (value) {
+        this.arr.push(value);
+    };
+    return MyMath;
+}());
+var mymath = new MyMath();
+mymath.add(1);
+mymath.add(2);
+mymath.add(3);

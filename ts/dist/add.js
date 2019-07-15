@@ -25,8 +25,8 @@ var person = ['某某某', 28];
 var sex;
 (function (sex) {
     sex[sex["boy"] = 0] = "boy";
-    sex[sex["girl"] = 1] = "girl";
-    sex[sex["se"] = 2] = "se";
+    sex[sex["girl"] = 5] = "girl";
+    sex[sex["se"] = 6] = "se";
 })(sex || (sex = {}));
 var orderStatus;
 (function (orderStatus) {
@@ -42,37 +42,37 @@ str1 = "hello swr";
 str1 = 28;
 str1 = null;
 str1 = undefined;
-function say(name) {
+function say (name) {
     console.log("hello1", name);
     return undefined;
 }
 var xx;
-function error(message) {
+function error (message) {
     throw new Error(message);
 }
-function loop() {
+function loop () {
     while (true) {
         console.log("陷入死循环啦");
     }
 }
-function parse(str) {
+function parse (str) {
     return JSON.parse(str);
 }
 var json2 = parse("1515");
-function say5() {
+function say5 () {
     return "ok";
 }
-function say7(name) {
+function say7 (name) {
     console.log("hello", name);
 }
-function say8(name, age) {
+function say8 (name, age) {
     console.log("hello", name, age);
 }
-function ajax(url, method) {
+function ajax (url, method) {
     if (method === void 0) { method = "GET"; }
     console.log(url, method);
 }
-function sum(a) {
+function sum (a) {
     var args = [];
     for (var _i = 1; _i < arguments.length; _i++) {
         args[_i - 1] = arguments[_i];
@@ -80,7 +80,7 @@ function sum(a) {
     console.log(args);
     return eval(args.join("+"));
 }
-function pickCard(x) {
+function pickCard (x) {
     if (typeof x == "object") {
         console.log(1);
     }

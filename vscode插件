@@ -8,6 +8,8 @@ Color Info  写颜色时自动提示相关颜色
 Git History 显示文件的提交历史以及相关
 GitLens — Git supercharged 支持vscode内提交git
 Image preview 图片的代码内预览
+React-Native/React/Redux snippets for es6/es7 快捷生成react 组件的教脚手架
+ 
  
  
  

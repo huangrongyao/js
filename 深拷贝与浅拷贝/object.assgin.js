@@ -77,3 +77,5 @@ let b = {
 console.log(typeof Object.assgin2)
 let c = Object.assgin2(a, b)
 console.log(c)
+
+// js中直接输出一个object对象显示的是[object Objec

@@ -29,25 +29,30 @@
 
 // ------------实现assign---------------
 // 思路：
-//    1.判断原生Object是否有要增加的这个方法，如果不存在，就创建一个assgin2并且使用Object.define.defineProperty加到原型上去
+//    1.判断原生Object是否有要增加的这个方法，如果不存在，就创建一个hello并且使用Object.define.defineProperty加到原型上去
 //    2.判断参数是否正确 ，target不能为空，必须设置值，{}都行
 //    3.使用Object()转换成对象，并保存为to,最后返回这个对象
 //    4.使用for..in循环遍历出所有可枚举的自有属性，并且复制给新的目标对象,(使用hasOwnProperty获取自有属性，即非原型上的属性)
 //    5.原生情况下挂载在 Object 上的属性是不可枚举的，但是直接在 Object 上挂载属性 a 之后是可枚举的，所以这里必须使用 Object.defineProperty，并设置 enumerable: false 以及 writable: true, configurable: true。
 
 if(typeof Object.assgin2 != "function"){
-  Object.defineProperty(Object,'assgin2',{
+  // console.log(typeof Object.assgin)
+  Object.defineProperty(Object,"assgin2",{
     value:function(target){
+      'use strict';
       if(target == null){  // 参数必须传，空对象都可以
         throw new TypeError('Cannot convert undefined or null to object')
       }
       var to = Object(target)
       for(var i = 1; i < arguments.length;i++){
         var nextSource = arguments[i]
-        for(var key in nextSource){
-          if(Object.prototype.hasOwnProperty.call(Object,key)){
-            to[key] = nextSource[key]
-          } 
+        if(nextSource != null){  // 不能不传，传{}都可以
+          for(var key in nextSource){
+            if(Object.prototype.hasOwnProperty.call(nextSource,key)){
+              console.log(key)
+              to[key] = nextSource[key]
+            } 
+          }
         }
       }
       return to
@@ -57,3 +62,18 @@ if(typeof Object.assgin2 != "function"){
     configurable:true
   })
 }
+
+let a = {
+  name: "advanced",
+  age: 18
+}
+let b = {
+  name: "muyiy",
+  book: {
+      title: "You Don't Know JS",
+      price: "45"
+  }
+}
+console.log(typeof Object.assgin2)
+let c = Object.assgin2(a, b)
+console.log(c)

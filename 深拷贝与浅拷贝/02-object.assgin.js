@@ -74,8 +74,15 @@ let b = {
       price: "45"
   }
 }
-console.log(typeof Object.assgin2)
-let c = Object.assgin2(a, b)
-console.log(c)
+// console.log(typeof Object.assgin2)
+// let c = Object.assgin2(a, b)
+// console.log(c)
+var v1 = "abc";
+var v2 = true;
+var v3 = 10;
+var v4 = Symbol("foo");
 
-// js中直接输出一个object对象显示的是[object Objec
+var obj = Object.assign({}, v1, null, v2, undefined, v3, v4); 
+// 原始类型会被包装，null 和 undefined 会被忽略。
+// 注意，只有字符串的包装对象才可能有自身可枚举属性。null, v2, undefined, v3, v4 都被忽略，原因在于他们自身没有可枚举属性。
+console.log(obj) // { '0': 'a', '1': 'b', '2': 'c' }

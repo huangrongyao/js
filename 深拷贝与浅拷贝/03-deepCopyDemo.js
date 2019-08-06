@@ -18,7 +18,7 @@
 
 function deepCopy(source){
   if(!isObject(source)) return source  // 非对象返回自身
-  var target = Array.isArray(source) ? [] : {}
+  var target = Array.isArray(source) ? [] : {} // 支持数组的深拷贝
   for(var key in source){
     if(Object.prototype.hasOwnProperty.call(source,key)){
       if(typeof source[key] === 'Object'){
@@ -43,4 +43,7 @@ var a = {
 }
 var c = 12
 var d = [0,1,2,5]
-console.log(deepCopy(d))
+let str = JSON.parse(JSON.stringify(a))
+str.a1 = str
+console.log(str)
+console.log(a)

@@ -23,6 +23,13 @@
                     } 
                     setTimeout("toggleSound()",1) 
          * 4.
+              document.body.addEventListener('focusin', () => {  //软键盘弹起事件
+                  // alert("键盘弹起")  
+              })
+              document.body.addEventListener('focusout', () => { //软键盘关闭事件
+                  // alert("键盘收起")  
+                  // window.scroll(0,0)
+              })
          * 
          * 
          * 

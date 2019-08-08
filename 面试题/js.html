@@ -18,6 +18,38 @@
               所以 String() 返回的是字符串 new String() 返回的是对象
           2. ==值相等，会进行拆箱转换，执行toString和valueOf, ===类型和值必须相等 
      */
+
+     /**
+      * 2.1 new的作用？
+      *   作用：
+      *     1、创建了一个新的空对象
+      *         var obj = {};
+      *     2、设置新对象的__proto__属性指向构造函数的prototype对象
+      *         obj.__proto__ = ClassA.prototype;
+      *     3、使用新对象调用构造函数，构造函数中的this被指向新对象
+      *         ClassA.call(obj);　　//{}.构造函数()
+      *     4、如果构造函数没有返回其他对象，new会将初始化完毕的新对象地址保存到等号左边的变量中
+      * 
+      * 2.2 自己实现一个new
+     */
+      function create(){
+        // 创建一个新对象
+        var obj = {} 
+        // 获取构造函数，数组的shift可以截取第一项并修改原数组
+        con = [].shift.call(arguments)
+        // 新对象的原型指向构造函数的prototype,使其可以访问构造函数原型中的属性
+        obj.__proto__ = con.prototype
+        // 绑定this,新对象可以访问构造函数中的属性
+        var ret = con.apply(obj,arguments)
+        // 优先返回构造函数返回的对象，没有则返回新对象
+        return ret instanceof Object ? ret : obj
+      }
+      // function Person() {...}
+      // // 使用内置函数new
+      // var person = new Person(...)                  
+      // // 使用手写的new，即create
+      // var person = create(Person, ...)
+
   </script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css</title>
+</head>
+<body>
+  <script>
+    /**
+     *  1.BFC
+     *    1.1 什么叫BFC?
+     *        块级格式上下文，是页面盒模型布局中的一种 CSS 渲染模式，相当于一个独立的容器，里面的元素和外部的元素相互不影响
+     *    1.2 BFC作用？
+     *        清除浮动
+              防止同一BFC 容器中的相邻元素间的外边距重叠问题
+     *    1.3 如何形成BFC?
+              html 根元素
+              float 浮动
+              绝对定位和固定定位
+              overflow 不为 visiable
+              display 为inline-block、table-cell（HTML表格单元格默认属性）、table-caption（HTML表格标题默认属性）
+     */ 
+
+    /**
+     *  2.比较 opacity: 0、visibility: hidden、display: none 优劣和适用场景。
+     *    结构：display:none: 会让元素完全从渲染树中消失，渲染的时候不占据任何空间, 不能点击， 
+     *          visibility: hidden:不会让元素从渲染树消失，渲染元素继续占据空间，只是内容不可见，不能点击
+     *          opacity: 0: 不会让元素从渲染树消失，渲染元素继续占据空间，只是内容不可见，可以点击
+          继承： display: none和opacity: 0：是非继承属性，子孙节点消失由于元素从渲染树消失造成，通过修改子孙节点属性无法显示。 
+                visibility: hidden：是继承属性，子孙节点消失由于继承了hidden，通过设置visibility: visible;可以让子孙节点显式。
+          性能： displaynone : 修改元素会造成文档回流,性能消耗较大 
+                visibility:hidden: 修改元素只会造成本元素的重绘,性能消耗较少
+                opacity: 0:提升为合成层，不会触发重绘，性能较高
+          联系：它们都能让元素不可见
+     * 
+     */
+
+    /**
+     *  3.重绘与回流
+     * 
+     * 
+     */ 
+  </script>
+</body>
+</html>

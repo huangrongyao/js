@@ -15,7 +15,6 @@
             line-height: 500px;
             font-size:30px;
             /* background: currentColor; */
-
         }
 
     </style>
@@ -35,7 +34,6 @@
     function count(a){
         num++ 
         div.innerHTML = num
-        
     }
     // document.querySelector('button').addEventListener('click',function(){
 
@@ -50,20 +48,33 @@
 
     // 自己实现debounce方法
     // 2.立即执行版
-    function invoking(func,wait){
-        let timeout
-        return function () {
-            let context = this
-            let args = arguments
-            if (timeout) clearTimeout(timeout)
-            let callNow = !timeout
-            timeout = setTimeout(() => {
-                timeout = null
-            }, wait)
-            if (callNow) func.apply(context, args)
-        }
-    }
-    // div.addEventListener('mousemove',invoking(count,500))
+    // function invoking(func,wait){
+    //     let timeout
+    //     return function () {
+    //         let context = this
+    //         let args = arguments
+    //         if (timeout) clearTimeout(timeout)
+    //         let callNow = !timeout
+    //         timeout = setTimeout(() => {
+    //             timeout = null
+    //         }, wait)
+    //         if (callNow) func.apply(context, args)
+    //     }
+    // }
+    // function invoking(fn,wait){
+    //   let timeout
+    //   return function(){
+    //     if(!timeout){
+    //       fn.apply(this,arguments)
+    //     }else{
+    //       clearTimeout(timeout)
+    //     }
+    //     timeout = setTimeout(()=>{
+    //       timeout = null
+    //     },wait)
+    //   }
+    // }
+    div.addEventListener('mousemove',invoking(count,500))
     // 3.非立即执行版本
     function delayInvoke(func,wait){
         let timeout
@@ -106,7 +117,7 @@
             }
         }
     }
-    div.addEventListener('mousemove',debounce(count,500,true))
+    // div.addEventListener('mousemove',debounce(count,500,true))
     // div.addEventListener('mousemove',debounce(count,500,false))
 
 </script>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>js</title>
+</head>
+<body>
+  <script>
+    /**
+     *  1.写出如下代码的返回值
+          String('11') == new String('11') // true
+          String('11') === new String('11') // false
+        解析：
+          1. 当 String() 和运算符 new 一起作为构造函数使用时，它返回一个新创建的 String 对象，存放的是字符串 s 或 s 的字符串表示。
+              当不用 new 运算符调用 String() 时，它只把 s 转换成原始的字符串，并返回转换后的值。
+              所以 String() 返回的是字符串 new String() 返回的是对象
+          2. ==值相等，会进行拆箱转换，执行toString和valueOf, ===类型和值必须相等 
+     */
+  </script>
+</body>
+</html>

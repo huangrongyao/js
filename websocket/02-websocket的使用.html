@@ -1,0 +1,87 @@
+<!DOCTYPE html>  
+<meta charset="utf-8" />  
+<title>WebSocket Test</title>  
+<h2>WebSocket Test</h2>  
+<div id="output"></div> 
+<script language="javascript"type="text/javascript">  
+    
+    var wsUri ="ws://echo.websocket.org/"; 
+    var output;  
+    
+    function init() { 
+        output = document.getElementById("output"); 
+        testWebSocket(); 
+    }  
+ 
+    function testWebSocket() { 
+        // 创建websocket对象参数是需要连接的服务器端的地址
+        // 同http协议使用http://开头一样，WebSocket协议的URL使用ws://开头，另外安全的WebSocket协议使用wss://开头
+        websocket = new WebSocket(wsUri)
+
+        // websocket.readyState  websocket的readyState属性表示连接的状态
+        // CONNECTING：值为0，表示正在连接。
+        // OPEN：值为1，表示连接成功，可以通信了。
+        // CLOSING：值为2，表示连接正在关闭。
+        // CLOSED：值为3，表示连接已经关闭，或者打开连接失败。
+        // ws.bufferedAmount
+        // 只读属性 bufferedAmount 已被 send() 放入正在队列中等待传输，但是还没有发出的 UTF-8 文本字节数
+        console.log(websocket.readyState)
+
+        // WebSocket对象一共支持四个消息 onopen, onmessage, onclose和onerror
+
+        // 当Browser和WebSocketServer连接成功后，会触发onopen消息
+        websocket.onopen = function(evt) { 
+            onOpen(evt)
+        }
+
+        // 当Browser接收到WebSocketServer端发送的关闭连接请求时，就会触发onclose消息。
+        websocket.onclose = function(evt) { 
+            onClose(evt) 
+        } 
+
+        // 当Browser接收到WebSocketServer发送过来的数据时，就会触发onmessage消息，参数evt中包含server传输过来的数据;
+        websocket.onmessage = function(evt) { 
+            // console.log(evt)
+            onMessage(evt) 
+        }
+
+        // 如果连接失败，发送、接收数据失败或者处理数据出现错误，browser会触发onerror消息
+        websocket.onerror = function(evt) { 
+            onError(evt) 
+        } 
+    }  
+ 
+    function onOpen(evt) { 
+        writeToScreen("CONNECTED")
+        doSend("WebSocket rocks")
+    }  
+ 
+    function onClose(evt) { 
+        writeToScreen("DISCONNECTED") 
+    }  
+ 
+    function onMessage(evt) { 
+        writeToScreen('<span style="color: blue;">RESPONSE: '+ evt.data+'</span>') 
+        websocket.close()
+    }  
+ 
+    function onError(evt) { 
+        writeToScreen('<span style="color: red;">ERROR:</span> '+ evt.data)
+    }  
+ 
+    function doSend(message) { 
+        writeToScreen("SENT: " + message)  
+        websocket.send(message) 
+    }  
+ 
+    function writeToScreen(message) { 
+        var pre = document.createElement("p")
+        pre.style.wordWrap = "break-word" 
+        pre.innerHTML = message
+        output.appendChild(pre)
+    }  
+ 
+    window.addEventListener("load", init, false)  
+</script>  
+ 
+</html>

@@ -14,9 +14,9 @@
  * @param  {...any} args 其他参数
  */
 const createCurry = (fn, ...args) => {
-    console.log(args)                                        
+    console.log(args)
     // 获取目标函数定义的的参数个数
-    let length = fn.length  
+    let length = fn.length
     return (...rest) => {
         // 将已有的参数和新的参数合并
         let allArgs = args.slice(0)
@@ -29,12 +29,12 @@ const createCurry = (fn, ...args) => {
         }
     }
 }
-function add(a, b, c, d) {
+function add (a, b, c, d) {
     return a + b + c + d
 }
 
-const curryAdd = createCurry(add,2)
-const sum = curryAdd(3)(4)(5)   
+const curryAdd = createCurry(add, 2)
+const sum = curryAdd(3)(4)(5)
 
 // console.log(sum) 
 

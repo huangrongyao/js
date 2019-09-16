@@ -52,7 +52,16 @@ let b1 = 2
 // const用来声明常量,一旦声明,其值就不能修改,所以用const就必须声明并且初始化,只声明不赋值就会报错
 // const和let一样只在当前块级作用域内有效并且存在暂时性死区
 
-
+// 块级作用域
+function fn () {
+  console.log('outside')
+}
+{
+  function fn () {
+    console.log('inside')
+  }
+}
+fn()
 // 补充:
 // es5有两种声明变量方法: var 与 function 
 // es6 有四种声明方法:let const import class

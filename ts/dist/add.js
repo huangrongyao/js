@@ -136,15 +136,15 @@ var Animal = (function () {
     }
     return Animal;
 }());
-var Person6 = (function (_super) {
-    __extends(Person6, _super);
-    function Person6() {
+var Dog = (function (_super) {
+    __extends(Dog, _super);
+    function Dog() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Person6.prototype.eat = function () {
-        console.log("吃米饭");
+    Dog.prototype.eat = function () {
+        console.log("吃骨头");
     };
-    return Person6;
+    return Dog;
 }(Animal));
 function getUserInfo(user) {
     console.log(user.name + " " + user.age);

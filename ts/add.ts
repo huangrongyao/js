@@ -180,82 +180,89 @@ class Person2 {
     }
 }
 // ---------------------------3.类---------------------------
-    // 
-    // 2.定义一个类
-    // constructor 方法是类的构造函数，是一个默认方法，通过 new 命令创建对象实例时，自动调用该方法 返回实例对象 this ，
-    // 但是也可以指定 constructor 方法返回一个全新的对象，让返回的实例对象不是该类的实例。
-    // ES6 要求，子类的构造函数必须执行一次 super 函数，否则会报错。 super 这个关键字，既可以当做函数使用，也可以当做对象使用。
-    // 这两种情况下，它的用法完全不用。
-    // class A {}
-    // class B extends A {
-    // constructor() {
-    //     super();  // ES6 要求，子类的构造函数必须执行一次 super 函数，否则会报错。
-    // }
-    class Person1 {
-        name:string
-        age:number
-        constructor(name:string,age:number) {
-            this.name = name,
+// 
+// 2.定义一个类
+// constructor 方法是类的构造函数，是一个默认方法，通过 new 命令创建对象实例时，自动调用该方法 返回实例对象 this ，
+// 但是也可以指定 constructor 方法返回一个全新的对象，让返回的实例对象不是该类的实例。
+// ES6 要求，子类的构造函数必须执行一次 super 函数，否则会报错。 super 这个关键字，既可以当做函数使用，也可以当做对象使用。
+// 这两种情况下，它的用法完全不用。
+// class A {}
+// class B extends A {
+// constructor() {
+//     super();  // ES6 要求，子类的构造函数必须执行一次 super 函数，否则会报错。
+// }
+class Person1 {
+    name: string
+    age: number
+    constructor(name: string, age: number) {
+        this.name = name,
             this.age = age
-        }
-        say(){
-            console.log('hello' + name)
-        }
     }
-    // 3.类的继承
-    // class Parent{
-    // 这里声明的变量，是实例上的属性
-    class Person {
-        name:string
-        age:number
-        constructor(name:string,age:number){
-            // this.name和this.age必须在前面先声明好类型
-            // name:string   age:number
-            this.name = name
-            this.age = age
-        }
-        // 原型方法
-        say():string{
-            return "hello swr"
-        }
+    say() {
+        console.log('hello' + name)
     }
-    class Child extends Person {
-        childName:string 
-        constructor(name:string,age:number,childName:string){
-            super(name,age)
-            this.childName = childName
-        }
-        childSay():string{
-            return this.childName
-        }
+}
+// 3.类的继承
+// class Parent{
+// 这里声明的变量，是实例上的属性
+class Person {
+    name: string
+    age: number
+    constructor(name: string, age: number) {
+        // this.name和this.age必须在前面先声明好类型
+        // name:string   age:number
+        this.name = name
+        this.age = age
     }
-    // let child = new Child('某某某1',28,'bb')
-    // console.log(child)
-    // 4.类的修饰符
-    //   public公开的，可以供自己、子类以及其它类访问
-    //   protected受保护的，可以供自己、子类访问，但是其他就访问不了
-    //   private私有的，只有自己访问，而子类、其他都访问不了 
+    // 原型方法
+    say(): string {
+        return "hello swr"
+    }
+}
+class Child extends Person {
+    childName: string
+    constructor(name: string, age: number, childName: string) {
+        super(name, age)
+        this.childName = childName
+    }
+    childSay(): string {
+        return this.childName
+    }
+}
+// let child = new Child('某某某1',28,'bb')
+// console.log(child)
+// 4.类的修饰符
+//   public公开的，可以供自己、子类以及其它类访问
+//   protected受保护的，可以供自己、子类访问，但是其他就访问不了
+//   private私有的，只有自己访问，而子类、其他都访问不了 
 
-    // 5.抽象类 使用abstract 关键字
-    abstract class Animal{
-        // 实际上是使用了public修饰符
-        // 如果添加private修饰符则会报错
-        abstract eat():void ;
+// 5.抽象类 使用abstract 关键字
+abstract class Animal {
+    // 实际上是使用了public修饰符
+    // 如果添加private修饰符则会报错
+    abstract eat(): void;
+}
+
+// 需要注意的是，这个Animal类是不能实例化的
+// let animal = new Animal() // 报错
+
+// 抽象类的抽象方法，意思就是，需要在继承这个抽象类的子类中实现这个抽象方法，不然会报错
+// 报错，因为在子类Person6中没有实现eat抽象方法
+// class Person6 extends Animal {
+//     eat1() {
+//         console.log("吃米饭")
+//     }
+// }
+// 不会报错,因为Dog类中实现了抽象方法eat
+class Dog extends Animal {
+    eat() {
+        console.log("吃骨头")
     }
-    
-    // 需要注意的是，这个Animal类是不能实例化的
-    // let animal = new Animal() // 报错
-    
-    // 抽象类的抽象方法，意思就是，需要在继承这个抽象类的子类中
-    // 实现这个抽象方法，不然会报错
-    // 报错，因为在子类中没有实现eat抽象方法
-    class Person6 extends Animal{
-        eat(){
-            console.log("吃米饭")
-        }
-    }
+}
 // ---------------------------4.接口---------------------------
-// 这里的接口，主要是一种规范，规范某些类必须遵守规范，和抽象类有点类似，但是不局限于类，还有属性、函数等。
+
+// !!!!这里的接口，主要是一种规范，规范某些类必须遵守规范，和抽象类有点类似，但是不局限于类，还有属性、函数等。!!!!
+
 // 需要使用到关键字interface
 // 1.接口规范对象 
 //      可以让多个方法使用这个规范 
@@ -264,22 +271,22 @@ class Person2 {
 //          console.log(`${user.name} ${user.age}`)
 //      }
 //      getUserInfo({name:"规范类",age:28})
-    interface infoInterface{
-        name:string,
-        age:number,
-        city?:string// 该参数为可选参数
-    }
-    function getUserInfo(user:infoInterface){
-         console.log(`${user.name} ${user.age}`)
-    }
+interface infoInterface {
+    name: string,
+    age: number,
+    city?: string // 该参数为可选参数
+}
+function getUserInfo(user: infoInterface) {
+    console.log(`${user.name} ${user.age}`)
+}
 // 2.接口规范函数
 //      对一个函数的参数和返回值进行规范
 interface mytotal {
-//      左侧是函数的参数，右侧是函数的返回类型
-    (a:number,b:number) : number
-} 
+    //      左侧是函数的参数，右侧是函数的返回类型
+    (a: number, b: number): number
+}
 
-let total:mytotal = function (a:number,b:number):number {
+let total: mytotal = function (a: number, b: number): number {
     return a + b
 }
 // console.log(total(10,20))
@@ -288,98 +295,106 @@ interface userInterface {
     // index为数组的索引，类型是number
     // 右边是数组里为字符串的数组成员
     [index: number]: string
-  }
-  let arr: userInterface = ['规范数组', 'iamswr'];
-  console.log(arr)
+}
+let arr: userInterface = ['规范数组', 'iamswr'];
+console.log(arr)
 
 // 4.接口是如何规范类的
 // 首先实现一个接口
-interface Animal1{
+interface Animal1 {
     // 这个类必须有name
-    name:string,
+    name: string,
     // 这个类必须有eat方法
     // 规定eat方法的参数类型以及返回值类型
-    eat1(any:string):void
+    eat1(any: string): void
 }
 // 新增一个接口
-interface Animal2{
-    sleep():void
+interface Animal2 {
+    sleep(): void
 }
 // 关键字 implements 实现
 // 因为接口是抽象的，需要通过子类去实现它
 // 可以在implements后面通过逗号添加，实现遵循多个接口，
 // 一个类只能继承一个父类，但是却能遵循多个接口
-class Person9 implements Animal1,Animal2{
-    name:string
-    constructor(name:string){
+class Person9 implements Animal1, Animal2 {
+    name: string
+    constructor(name: string) {
         this.name = name
     }
-    eat1(any:string):void{
+    eat1(any: string): void {
         console.log(`吃${any}`)
     }
-    sleep(){
+    sleep() {
         console.log('睡觉')
     }
 }
 // 5.接口可以继承接口 就和类继承类一样的
-interface Animal3{
-    name:string,
-    eat(any:string):void
+interface Animal3 {
+    name: string,
+    eat(any: string): void
 }
 // 像类一样，通过extends继承
-interface Animal4 extends Animal3{
-    sleep():void
+interface Animal4 extends Animal3 {
+    sleep(): void
 }
-// 因为Animal2类继承了Animal
-// 所以这里遵循Animal2就相当于把Animal也继承了
-class Person10 implements Animal4{
-    name:string
-    constructor(name:string){
+// 因为Animal4类继承了Animal3
+// 所以这里遵循Animal4就相当于把Animal3也继承了
+class Person10 implements Animal4 {
+    name: string
+    constructor(name: string) {
         this.name = name
     }
-    eat(any:string):void{
+    eat(any: string): void {
         console.log(`吃${any}`)
     }
-    sleep(){
+    sleep() {
         console.log('睡觉')
     }
 }
+
+//   那么我们会思考，有了接口为什么还需要抽象类？
+//   接口里面只能放定义，抽象类里面可以放普通类、普通类的方法、定义抽象的东西。
+// 比如抽象类中有10个方法, 其中九个是实现过的方法, 只有一个是抽象的方法, 那么子类继承过来
+
 // ---------------------------5.泛型---------------------------
 
 // 1.有一个方法，里面接收参数，但是参数类型我们是不知道，但是这个类型在方法里面很多地方会用到，参数和返回值要保持一致性
 // <T>的意思是泛型，即generic type
 // 可以看出value的类型也为T，返回值的类型也为T
-function deal<T>(value:T):T{
+function deal<T>(value: T): T {
     return value
 }
 // 下面的<string>、<number>实际上用的时候再传给上面的<T>
 // console.log(deal<string>("hello"))
 // console.log(deal<number>(28))
+
 //2.类的泛型是如何使用的
+//  泛型使用的较少,类的泛型比较重要
+
+
 class MyMath<T>{
     // 定义一个私有属性
-    private arr:T[] = []
+    private arr: T[] = []
     // 规定传参类型
-    add(value:T){
-      this.arr.push(value)
+    add(value: T) {
+        this.arr.push(value)
     }
     // 规定返回值的类型
     // max():T{
     //   return Math.max.apply(null,this.arr)
     // }
-  }
-  
-  // 这里规定了类型为number
-  // 相当于把T都替换成number
-  let mymath = new MyMath<number>()
-  mymath.add(1)
-  mymath.add(2)
-  mymath.add(3)
+}
+
+// 这里规定了类型为number
+// 相当于把T都替换成number
+let mymath = new MyMath<number>()
+mymath.add(1)
+mymath.add(2)
+mymath.add(3)
 //   console.log(mymath.max())
-  
-  // 假设我们传个字符串呢？
-  // 则会报错:类型“"hello"”的参数不能赋给类型“number”的参数。
+
+// 假设我们传个字符串呢？
+// 则会报错:类型“"hello"”的参数不能赋给类型“number”的参数。
 //   mymath.add("hello")
-//   复制代码那么我们会思考，有了接口为什么还需要抽象类？
-//   接口里面只能放定义，抽象类里面可以放普通类、普通类的方法、定义抽象的东西。
-  
+
+

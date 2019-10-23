@@ -9,7 +9,7 @@
     "wxml": "html"
     },
     "minapp-vscode.disableAutoConfig": true,
-    "window.zoomLevel": 1,
+    "window.zoomLevel": -1,
     "breadcrumbs.enabled": true,
     "git.autofetch": true,
     // "terminal.integrated.shell.windows": "D:/Git/bin/bash.exe", //终端设置为git

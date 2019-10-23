@@ -308,6 +308,9 @@ node 的主要核心模块 http fs url
     率目前为 10 分钟 一次以保证尽量与官方服务同步。
     npm install -g cnpm --registry=https://registry.npm.taobao.org
 
+node 起一个静态服务器
+
+
 
 
 

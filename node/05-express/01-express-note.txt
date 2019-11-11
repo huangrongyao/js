@@ -1,0 +1,91 @@
+创建package.json npm init 
+安装express   npm install express --save
+引入express
+  var express = require('express')
+  var app = news express() // new关键字不写也可以
+配置路由
+  app.get('',function(req,res){
+
+  })
+  app.listen(3000,'127.0.0.1')
+
+动态路由配置与获取
+  // 1.设置动态路由
+  app.get('/login/:aid', function (req, res) {
+    // 2.获取动态路由
+    console.log(req.params.aid)
+    res.send('nihao')
+  })
+
+get传值设置与获取
+  // url :localhost:3000/login?age=18&name=zs
+  app.get('/product/', function (req, res) {
+    console.log(req.query.name)
+    res.send('nihao')
+  })
+express中使用模板引擎(ejs)
+  1.安装ejs npm install ejs 
+  2.配置模板引擎(直接使用ejs,不用引入 express集成了ejs) app.set("view engine","ejs")
+  3.在express中使用模板引擎
+    res.render(路径[,参数],[回调函数])
+    默认会寻找根目录下views文件夹里的文件,文件后缀为.ejs可以不写 
+    app.get('',function(req.res){
+      var arr = [111, 222, 333]
+      res.render('index', { list: arr })
+    })
+
+    // views/index.ejs
+    <body>
+      <div>你好ejs</div>
+      <ul>
+        <% for(var i=0; i<list.length; i++) {%>
+          <li>
+            <%= list[i] %>
+          </li>
+          <% } %>
+      </ul>
+    </body>
+
+ejs改变模板的位置 app.set('views',__dirname + '/views)
+
+Ejs 后缀修改为 Html
+
+看着.ejs 的后缀总觉得不爽，使用如下方法，可以将模板文件的后缀换成我们习惯的.html。
+  1.在 app.js 的头上定义 ejs:,代码如下:
+  var ejs = require('ejs');
+  2.注册 html 模板引擎代码如下：
+  app.engine('html',ejs.__express);
+  3.将模板引擎换成 html 代码如下:
+  app.set('view engine', 'html');
+  4.修改模板文件的后缀为.html。
+
+ejs模板中支持引入其他模板文件 类似引入公共组件
+
+views/index.ejs
+  <body>
+    <div>你好ejs</div>
+    <%- include public/header.ejs %>
+      <ul>
+        <% for(var i=0; i<list.length; i++) {%>
+          <li>
+            <%= list[i] %>
+          </li>
+          <% } %>
+      </ul>
+  </body>
+views/public/headder/.ejs
+  <h2>我是header组件</h2>
+
+利用express.static 托管静态文件 css,图片,js,zip等等
+  app.use(express.static('public'))  // 给该目录下的文件提供静态web服务  
+  http://localhost:3000/css/style.css 会先访问public下css/style.css ,没有再匹配路由
+  http://localhost:3000/111.rar 会先访问public下111.rar,进行下载
+
+views/index.ejs 
+  <link rel="stylesheet" href="css/style.css">  访问的是localhost:3000/css/style.css 
+  <img src="images/baidu.png"> // 路径不用写public,但是访问的就是public下的images/baidu.png
+
+配置虚拟目录的静态服务 
+  app.use('/static', express.static('public'));
+  当路由中有/static时,就会在public目录下寻找static后面路径的文件
+    eg: localhost:3000/static/images/baidu.png  // 访问public下的images/baidu.png

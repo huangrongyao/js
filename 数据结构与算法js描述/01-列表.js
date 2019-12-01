@@ -122,6 +122,7 @@ name.append('ert')
 for (name.front(); name.hasNext(); name.next()) {
   console.log(name.getElement())
 }
+
 // 从后向前访问列表
 for (name.end(); name.hasPrev(); name.prev()) {
   console.log(name.getElement())

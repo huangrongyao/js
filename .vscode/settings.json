@@ -16,4 +16,5 @@
     "flow.useNPMPackagedFlow": true,
     "javascript.validate.enable": false,
     "editor.renderIndentGuides": false,
+    "git.ignoreLimitWarning": true,
     }

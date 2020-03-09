@@ -15,7 +15,7 @@ var app = http.createServer((req, res) => {
   if (pathName == '/') {
     pathName = '/index.html'
   }
-  // 后缀名
+  // 后缀名 
   var extName = path.extname(pathName)
   if (pathName != '/favicon.ico') {
     // console.log(extName)

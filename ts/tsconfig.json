@@ -25,7 +25,7 @@
     /* Strict Type-Checking Options */
     "strict": true, /* Enable all strict type-checking options. */
     // "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */ // 如果编译器无法根据变量的用途推断出变量的类型，它就会悄悄的把变量类型默认为 any。这就是 隐式 any 的含义;当 noImplicitAny 标志是 true 并且 TypeScript 编译器无法推断出类型时，它仍然会生成 JavaScript 文件。 但是它也会 报告一个错误
-    // "strictNullChecks": true,              /* Enable strict null checks. */
+    "strictNullChecks": true,              /* Enable strict null checks. */
     // "strictFunctionTypes": true,           /* Enable strict checking of function types. */
     // "strictBindCallApply": true,           /* Enable strict 'bind', 'call', and 'apply' methods on functions. */
     // "strictPropertyInitialization": true,  /* Enable strict checking of property initialization in classes. */

@@ -1,0 +1,40 @@
+// 数组的方法 es5 forEach reduce map filter some every 
+// es6 find findIndex 
+// es7 includes
+
+// reduce 常见功能 多个数据变成一个数据
+let keys = ['name','age'];
+let values = ['zs',18];
+// let obj = keys.reduce((memo,key,idx)=>{
+//   memo[key] = values[idx];
+//   return memo
+// },{})
+let obj = keys.reduce((memo,key,idx)=>(memo[key] = values[idx], memo),{})  // (1,2,3,4) 逗号运算符，returns的是最后一项的值
+// console.log(obj)
+
+
+// reduce redux compose 组合多个方法
+function sum(a,b) {
+  return a+b
+}
+
+function toUpper(str) {
+  return str.toUpperCase()
+}
+
+function add(str){
+  return '***' + str + '***'
+}
+
+function compose(...fns){
+  return (...args)=>{
+    let lastFn = fns.pop()
+    return fns.reduceRight((a,b)=>{
+      return b(a)
+    },lastFn(...args))
+  }
+}
+
+// console.log(add(toUpper(sum('zfpx','jw'))))  // ***ZFPXJW***
+let r = compose(add,toUpper,sum)('zfpx','jw')
+console.log(r)

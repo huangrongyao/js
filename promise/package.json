@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@rollup/plugin-node-resolve": "^11.2.1",
+    "node": "^15.14.0",
     "rollup": "^2.45.2",
     "rollup-plugin-typescript2": "^0.30.0",
     "ts-node": "^9.1.1",

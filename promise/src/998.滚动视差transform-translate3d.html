@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body {
+            margin: 0;
+        }
+        html {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            perspective: 2px;
+            transform-style: preserve-3d;
+            transform-origin: center center;
+            height: 100%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        .g-container {
+            position: relative;
+            height: 150%;  
+        }
+
+        .section {
+            font-size: 5vw;  
+            position: absolute;
+            top: 20%;
+        }
+        .section-one {
+            left: 0%;
+            background: rgba(10, 10, 10, .2);
+            transform: translateZ(-1px);
+        }
+        
+        .section-two {
+            left: 40%;
+            background: rgba(30, 130, 30, .2);
+            transform: translateZ(-2px);
+        }
+        
+        .section-three {
+            left: 90%;
+            background: rgba(200, 100, 130, .2);
+            transform: translateZ(-3px);
+        }
+
+
+    </style>
+</head>
+<body>
+        <div class="g-container">
+            <div class="section section-one">translateZ(-1)</div>
+            <div class="section section-two">translateZ(-2)</div>
+            <div class="section section-three">translateZ(-3)</div>
+        </div>
+    <!-- 
+         当页面滚动到图片应该出现的位置，被设置了 background-attachment: fixed 的图片并不会继续跟随页面的滚动而跟随上下移动，而是相对于视口固定死了。
+         即移动的只有视口，而背景图是一直固定死的。
+     -->
+
+   
+</body>
+</html>

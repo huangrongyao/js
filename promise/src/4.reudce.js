@@ -35,6 +35,26 @@ function compose(...fns){
   }
 }
 
+// let r = compose(add,toUpper,sum)('zfpx','jw')
 // console.log(add(toUpper(sum('zfpx','jw'))))  // ***ZFPXJW***
-let r = compose(add,toUpper,sum)('zfpx','jw')
-console.log(r)
+// console.log(r)
+
+
+Array.prototype.reduce = function(callback,prev){
+    for (let i = 0; i < this.length; i++) {
+        if (prev == null ){
+            prev = callback(this[i],this[i+1],i,this);
+            i++; // i+1 这项已经计算过了，所以要i++
+        }else {
+            prev = callback(prev, this[i], i, this);
+        }
+    }
+    return prev
+}
+
+
+let arr = [1,2,3,4,5,6,7];
+let sumResult = arr.reduce((prev,curData,curIdx,a)=>{
+    return prev + curData
+})
+console.log(sumResult)

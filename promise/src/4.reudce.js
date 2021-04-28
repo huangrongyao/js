@@ -43,11 +43,14 @@ function compose(...fns){
 Array.prototype.reduce = function(callback,prev){
     for (let i = 0; i < this.length; i++) {
         if (prev == null ){
-            prev = callback(this[i],this[i+1],i,this);
+            prev = callback(this[i],this[i+1],i+1,this);
+            // console.log(i + 1)
             i++; // i+1 这项已经计算过了，所以要i++
         }else {
             prev = callback(prev, this[i], i, this);
+            // console.log(i)
         }
+        // console.log(i)
     }
     return prev
 }
@@ -55,6 +58,7 @@ Array.prototype.reduce = function(callback,prev){
 
 let arr = [1,2,3,4,5,6,7];
 let sumResult = arr.reduce((prev,curData,curIdx,a)=>{
+    console.log(curIdx)
     return prev + curData
 })
-console.log(sumResult)
+// console.log(sumResult)
